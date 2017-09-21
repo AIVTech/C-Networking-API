@@ -80,6 +80,19 @@ public:
 
 		return sock;
 	}
+	
+	// handy function to find an element in array
+	template<class T>
+	T findElement(std::vector<T> vec, T element) {
+	bool exists = false;
+	for (int i = 0; i < vec.size(); i++) {
+		if (vec.at(i) == element) {
+			exists = true;
+			break;
+		}
+	}
+	return exists;
+}
 
 	// sending data as 'std::string'
 	void sendData(std::string msg) {
