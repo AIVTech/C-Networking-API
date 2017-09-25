@@ -11,6 +11,17 @@
 
 class Networking {
 public:
+	
+	// setting the username
+	void setUsername(std::string name) {
+		username = name;
+	}
+	
+	// getting username
+	std::string getUsername() {
+		return username;	
+	}
+	
 	// creating a server and connecting the client
 	SOCKET connectServer() {
 		WSAData wsData;
@@ -95,19 +106,15 @@ public:
 	}
 
 	// sending data as 'std::string'
-	void sendData(std::string msg) {
+	int sendData(std::string msg) {
 		int result = send(sock, msg.c_str(), msg.length(), 0);
-		if (result == SOCKET_ERROR) {
-			return;
-		}
+		return result;
 	}
 	// sending data as a char array
-	void sendData(char msg[]) {
+	int sendData(char msg[]) {
 		std::string data = msg;
 		int result = send(sock, data.c_str(), data.length(), 0);
-		if (result == SOCKET_ERROR) {
-			return;
-		}
+		return result;
 	}
 
 	// recieving data as 'std::string'
@@ -302,6 +309,7 @@ public:
 private:
 	SOCKET sock;
 	std::string IpAdress = "";
+	std::string username = "";
 
 	void writeFile(std::vector<byte> bytes, std::string dest_path) {
 		std::string path(dest_path);
