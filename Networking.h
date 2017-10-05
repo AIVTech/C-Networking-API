@@ -166,6 +166,11 @@ public:
 	std::string getClientIp() {
 		return IpAdress;
 	}
+	
+	// closing the socket
+	void closeSocket() {
+		closesocket(sock);
+	}
 
 	// file transfer
 	// *****************************************************
